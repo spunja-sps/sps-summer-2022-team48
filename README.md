@@ -11,3 +11,5 @@ This repo contains Team 48's product sprint project.
 ### Team members:
 Natalie Volk - Engineering Science student at the University of Toronto
 Jinyu Gan - Cognitive Science student at McGill University
+Maisha Thasin - Math & Computing student at University of Waterloo
+
