@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
@@ -10,6 +10,11 @@ def welcome():
 def config_page():
     return render_template("config.html")
 
-@app.route('/data-summary/')
+@app.route('/data-summary/', methods=['POST'])
 def data_summary_page():
+    watchlist = request.form.get("itemDropdown")
+    print(watchlist)
     return render_template("data_summary.html")
+
+if __name__ == '__main__':
+    app.run(debug=True)

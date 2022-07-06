@@ -10,6 +10,19 @@
     </head>
     <body>
         <p>Here is the configuration page.</p>
-        <a class="btn btn-outline-info" href='/data-summary/' role='button'>Save configuration</a>
+
+        <form class="watchlistSelection" action="data-summary" method="POST">  
+            <select class="watchlistForm" type="text" name="itemDropdown" placeholder="Select items to watch">
+                 <option disabled selected>Select items</option>
+                 <option id="Item1" value="Item1">Item1</option>
+                 <option id="Item2" value="Item2">Item2</option>
+                 <option id="Item3" value="Item3">Item3</option>
+                 <option id="Item4" value="Item4">Item4</option>
+                 <option id="Item5" value="Item5">Item5</option>
+            </select>
+            <input class="btn btn-outline-info" type="submit" href='/data-summary/' value="Save configuration">
+         </form>
+
+        <!--<a class="btn btn-outline-info" href='/data-summary/' role='button'>Save configuration</a>-->
     </body>
 </html>
