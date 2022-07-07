@@ -12,8 +12,10 @@ def config_page():
 
 @app.route('/data-summary/', methods=['POST'])
 def data_summary_page():
-    watchlist = request.form.get("itemDropdown")
+    watchlist = request.form.getlist("itemDropdown")
+
     print(watchlist)
+
     return render_template("data_summary.html")
 
 if __name__ == '__main__':
