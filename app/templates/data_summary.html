@@ -8,8 +8,19 @@
         <link rel="stylesheet" href="../static/css/style.css">
         <h1>Data Summary page</h1>
     </head>
+    
     <body>
         <p>Here is the data summary page.</p>
+        
+        <p>
+            {% for opt in options %}
+                <p>{{ opt }}</p>
+                <!-- if need to add links for each item in the future --> 
+                <!-- <a href="url_for('opt',name=1)">{{ opt }}</a> -->
+            {% endfor %}
+        </p>
+
+
         <a class="btn btn-outline-info" href='/' role='button'>Return to welcome</a>
         <a class="btn btn-outline-info" href='/config' role='button'>Return to configuration</a>
     </body>

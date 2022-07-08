@@ -16,7 +16,7 @@ def data_summary_page():
 
     print(watchlist)
 
-    return render_template("data_summary.html")
+    return render_template("data_summary.html", options=watchlist)
 
 if __name__ == '__main__':
     app.run(debug=True)
