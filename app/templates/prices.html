@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Prices</title>
+</head>
+
+<body>
+    <div>
+    {% block content %}
+        {% for price in prices %}
+        <div> {{ price }}
+        </div>
+        {% endfor %}
+    {% endblock %}
+    </div>
+</body>
+</html>

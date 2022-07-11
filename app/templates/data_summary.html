@@ -9,7 +9,14 @@
         <h1>Data Summary page</h1>
     </head>
     <body>
-        <p>Here is the data summary page.</p>
+        <p>Here is the data summary page.!!!!</p>
+        <div>
+            {% block content %}
+                {% for price in prices %}
+                <div>hi!</div> 
+                {% endfor %}
+            {% endblock %}
+            </div>
         <a class="btn btn-outline-info" href='/' role='button'>Return to welcome</a>
         <a class="btn btn-outline-info" href='/config' role='button'>Return to configuration</a>
     </body>
