@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 import json
 import urllib
 
@@ -12,26 +12,24 @@ def welcome():
 def config_page():
     return render_template("config.html")
 
-@app.route('/data-summary/')
+@app.route('/data-summary/', methods=['POST'])
 def data_summary_page():
+    watchlist = request.form.getlist("itemDropdown")
+    # print(watchlist)
+    get_prices(watchlist)
     return render_template("data_summary.html")
+def get_prices(list):
+    api_codes = {
+        "Corn": "TFGRAIN/CORN",
+        "Dairy": "CHRIS/CME_DA1",
+    }
+    for item in list:
+        url = "https://data.nasdaq.com/api/v3/datasets/" + api_codes[item] + "?api_key=7PvJ27fqD-s1fgvKWZgk"
+        response =  urllib.urlopen(url)
+        data = response.read()
+        dict = json.loads(data)
+        print(dict["dataset"]["data"][0][1])
 
-@app.route("/prices")
-def get_prices_list():
-    url = "https://data.nasdaq.com/api/v3/datasets/ODA/PSHRI_USD"
-    response =  urllib.urlopen(url)
-    prices = response.read()
-    dict = json.loads(prices)
-    print(dict["dataset"]["data"][0])
-    return render_template ("prices.html", prices=dict["dataset"]["data"])
 
-    # prices = []
-    # for prices in dict["results"]:
-    #     price = {
-    #         "value": price["value"],
-    #         "data": price["data"],
-    #     }
-        
-    #     prices.append(prices)
-
-    # return {"results": prices}
+if __name__ == '__main__':
+    app.run(debug=True)
