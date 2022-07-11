@@ -10,17 +10,29 @@
     </head>
     
     <body>
-        <p>Here is the data summary page.</p>
-        
-        <p>
+    <!---------watchlist items details--------->
+    <div class="watchlist-cart">
+        <table>
+            <tr>
+                <th>Item</th>
+                <th>Current price</th>
+                <th>Change in value</th>
+            </tr>
+            
             {% for opt in options %}
-                <p>{{ opt }}</p>
+            <tr>
                 <!-- if need to add links for each item in the future --> 
                 <!-- <a href="url_for('opt',name=1)">{{ opt }}</a> -->
+                <!--Item-->
+                <td>{{ opt }}</td>
+                <!--Current price-->
+                <td>$50.00</td>
+                <!--Change in value-->
+                <td>20.00%</td>   
+            </tr>
             {% endfor %}
-        </p>
-
-
+        </table>
+    </div>
         <a class="btn btn-outline-info" href='/' role='button'>Return to welcome</a>
         <a class="btn btn-outline-info" href='/config' role='button'>Return to configuration</a>
     </body>

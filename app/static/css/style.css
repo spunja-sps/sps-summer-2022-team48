@@ -8,3 +8,19 @@ html {
     width: 10% !important;
     margin: auto;
 }
+
+/*------ watchlist item ------*/
+.watchlist-cart{
+    margin: 80px auto;
+}
+table.watchlist-cart{
+    width: 100%;
+    border-collapse: collapse;
+}
+th.watchlist-cart{
+    text-align: left;
+    padding: 5px;
+    color: #fff;
+    background: #ff523b;
+    font-weight: normal;
+}
