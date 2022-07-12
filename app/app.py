@@ -5,6 +5,9 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import InputRequired, Length, ValidationError
 from flask_bcrypt import Bcrypt
+import json
+import urllib
+
 
 app = Flask(__name__)
 db = SQLAlchemy(app)
@@ -67,10 +70,21 @@ def config_page():
 @app.route('/data-summary/', methods=['POST'])
 def data_summary_page():
     watchlist = request.form.getlist("itemDropdown")
-
-    print(watchlist)
-
+    # print(watchlist)
+    get_prices(watchlist)
     return render_template("data_summary.html")
+def get_prices(list):
+    api_codes = {
+        "Corn": "TFGRAIN/CORN",
+        "Dairy": "CHRIS/CME_DA1",
+    }
+    for item in list:
+        url = "https://data.nasdaq.com/api/v3/datasets/" + api_codes[item] + "?api_key=7PvJ27fqD-s1fgvKWZgk"
+        response =  urllib.urlopen(url)
+        data = response.read()
+        dict = json.loads(data)
+        print(dict["dataset"]["data"][0][1])
+
 
 
 @app.route('/login', methods=['GET', 'POST'])
