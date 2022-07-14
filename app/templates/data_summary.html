@@ -18,14 +18,14 @@
                 <th>Current price</th>
                 <th>Change in value</th>
             </tr>
-            {% for opt in options %}
+            {% for item in prices_dict %}
             <tr>
                 <!-- if need to add links for each item in the future --> 
                 <!-- <a href="url_for('opt',name=1)">{{ opt }}</a> -->
                 <!--Item-->
-                <td>{{ opt }}</td>
+                <td>{{ item }}</td>
                 <!--Current price-->
-                <td>$50.00</td>
+                <td>{{ prices_dict[item] }} </td>
                 <!--Change in value-->
                 <td>20.00%</td>   
             </tr>
