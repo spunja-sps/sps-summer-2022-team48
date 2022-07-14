@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
 import json
-import urllib
+#import urllib
 
 app = Flask(__name__)
 
@@ -12,13 +12,14 @@ def welcome():
 def config_page():
     return render_template("config.html")
 
-@app.route('/data-summary/', methods=['POST'])
+@app.route('/data-summary', methods=['POST'])
 def data_summary_page():
     watchlist = request.form.getlist("itemDropdown")
     # print(watchlist)
-    get_prices(watchlist)
-    return render_template("data_summary.html")
-def get_prices(list):
+    # get_prices(watchlist)
+    return render_template("data_summary.html", options=watchlist)
+
+#def get_prices(list):
     api_codes = {
         "Corn": "TFGRAIN/CORN",
         "Dairy": "CHRIS/CME_DA1",
