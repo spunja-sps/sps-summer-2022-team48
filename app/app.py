@@ -1,10 +1,14 @@
 
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, session
+from flask_session import Session
 import json
 import requests
 
 
 app = Flask(__name__)
+app.config["SESSION_PERMANENT"] = False
+app.config["SESSION_TYPE"] = "filesystem"
+Session(app)
 
 
 @app.route('/')
@@ -20,8 +24,18 @@ def config_page():
 @app.route('/data-summary', methods=['POST'])
 def data_summary_page():
     watchlist = request.form.getlist("itemDropdown")
+    session["watchlist"] = watchlist
+
     prices_dict = get_prices(watchlist)
+
     return render_template("data_summary.html", prices_dict=prices_dict)
+
+@app.route('/graphing')
+def detailed_data_page():
+    watchlist = session.get("watchlist")
+    print(watchlist)
+
+    return render_template("data_detailed.html")
 
 
 def get_prices(list):
