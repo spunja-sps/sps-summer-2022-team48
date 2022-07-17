@@ -20,7 +20,6 @@ def config_page():
 @app.route('/data-summary', methods=['POST'])
 def data_summary_page():
     watchlist = request.form.getlist("itemDropdown")
-    # print(watchlist)
     prices_dict = get_prices(watchlist)
     return render_template("data_summary.html", prices_dict=prices_dict)
 
@@ -40,10 +39,6 @@ def get_prices(list):
             api_codes[item] + "?api_key=7PvJ27fqD-s1fgvKWZgk"
         response = requests.get(url)
         jsonResponse = response.json()
-        # response = urlopen(url)
-        # print(response)
-        # logger.info(type(response))
-        # dict = json.load(response)
         prices_dict[item] = [jsonResponse["dataset"]["data"]
                              [0][1], jsonResponse["dataset"]["data"][0][5]]
         # use dict["dataset"]["data"][0][5] for change in price - change not present for all items though
