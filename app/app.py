@@ -38,7 +38,22 @@ def detailed_data_page():
     watchlist = session.get("watchlist")
     print(watchlist)
 
-    return render_template("data_detailed.html")
+    # to be added back in after API is implemented
+    # prices_dict = get_prices([selected_item])
+    # print(prices_dict)
+
+    dummy_data = [
+        (1, 5),
+        (2, 7),
+        (3, 2),
+        (4, 4),
+        (5, 10)
+    ]
+
+    dummy_labels = [row[0] for row in dummy_data]
+    dummy_values = [row[1] for row in dummy_data]
+
+    return render_template("data_detailed.html", item=selected_item, labels=dummy_labels, values=dummy_values)
 
 
 def get_prices(list):

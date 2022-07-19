@@ -6,11 +6,49 @@
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 
     <head>
+        <meta charset="UTF-8">
+        <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
         <link rel="stylesheet" href="../static/css/style.css">
-        <h1>Detailed Data page</h1>
+        <h1>Detailed Data for {{ item }}</h1>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
     </head>
 
     <body>
-
+        <canvas id="lineChart" width="900" height="400"></canvas>
+        <script>
+            var ctx = document.getElementById("lineChart").getContext("2d");
+            var lineChart = new Chart(ctx, {
+                type: "line",
+                data: {
+                    labels: {{ labels | safe }},
+                    datasets: [
+                        {
+                            label: "{{ item | safe }}",
+                            data: {{ values | safe }},
+                            fill: false,
+                            borderColor: "rgb(75, 192, 192)",
+                            lineTension: 0.1
+                        }
+                    ]
+                },
+                options: {
+                    responsive: false,
+                    scales: {
+                        yAxes: [{
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Price'
+                            }
+                        }],
+                        xAxes: [{
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Date'
+                            }
+                        }]
+                    }
+                }
+            });
+        </script>
     </body>
 </html>
