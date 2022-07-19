@@ -30,8 +30,11 @@ def data_summary_page():
 
     return render_template("data_summary.html", prices_dict=prices_dict)
 
-@app.route('/graphing')
+@app.route('/graphing', methods=['GET', 'POST'])
 def detailed_data_page():
+    selected_item = request.args.get('item')
+    print(selected_item)
+
     watchlist = session.get("watchlist")
     print(watchlist)
 

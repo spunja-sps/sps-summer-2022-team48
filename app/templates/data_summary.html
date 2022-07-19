@@ -21,10 +21,8 @@
             </tr>
             {% for item in prices_dict %}
             <tr>
-                <!-- if need to add links for each item in the future -->
-                <!-- <a href="url_for('opt',name=1)">{{ opt }}</a> -->
                 <!--Item-->
-                <td>{{ item }}</td>
+                <td><a href="{{ url_for('detailed_data_page', item=item) }}">{{ item }}</a></td>
                 <!--Current price-->
                 <td>{{ prices_dict[item][0] }} </td>
                 <!--Change in value-->
