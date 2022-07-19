@@ -26,6 +26,11 @@ def data_summary_page():
     return render_template("data_summary.html", prices_dict=prices_dict)
 
 
+def make_call(url):
+    response = requests.get(url)
+    return response.json()
+
+
 def get_prices(list):
     api_codes = {
         "Arabica Coffee": "COFFEE",
@@ -38,18 +43,19 @@ def get_prices(list):
     today = datetime.datetime.now().date()
     date = get_date(today)
     for item in list:
-        url = "https://commodities-api.com/api/timeseries?access_key=cqmirudsx2mdaprj2o1s2ftv838j8n3ra5q8cge1s195uxsk8sv3jw4bddfo&start_date=" + str(date) + "&end_date=" + str(today) + "&symbols=" + \
+        url_today = "https://commodities-api.com/api/latest?access_key=cqmirudsx2mdaprj2o1s2ftv838j8n3ra5q8cge1s195uxsk8sv3jw4bddfo&symbols=" + \
             api_codes[item]
-        print(url)
-        response = requests.get(url)
-        jsonResponse = response.json()
+        url_past = "https://commodities-api.com/api/" + str(date) + "?access_key=cqmirudsx2mdaprj2o1s2ftv838j8n3ra5q8cge1s195uxsk8sv3jw4bddfo&&symbols=" + \
+            api_codes[item]
+        jsonResponseToday = make_call(url_today)
+        jsonResponsePast = make_call(url_past)
         print(date)
-        print(jsonResponse["data"])
         price_today = 1 / \
-            jsonResponse["data"]["rates"][str(today)][api_codes[item]]
+            jsonResponseToday["data"]["rates"][api_codes[item]]
         print(price_today)
+        print(jsonResponsePast)
         price_at_date = 1 / \
-            jsonResponse["data"]["rates"][str(date)][api_codes[item]]
+            jsonResponsePast["data"]["rates"][api_codes[item]]
         prices_dict[item] = [price_today,
                              get_change(price_today, price_at_date)]
         print(prices_dict[item])
