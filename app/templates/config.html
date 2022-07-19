@@ -6,13 +6,17 @@
 
     <head>
         <link rel="stylesheet" href="../static/css/style.css">
-        <h1>Configuration page</h1>
+        <title>Select</title>
     </head>
+    
     <body>
-        <p>Here is the configuration page.</p>
-        <p>Hold down the Ctrl (windows) / 
+        <header id="Configuration">
+            <h1>Configuration page</h1>
+            <p>Select the items you would like to see affected by inflation.</p>
+            <p>Hold down the Ctrl (windows) / 
             Command (Mac) button to select multiple options.</p>
-            
+        </header>
+
         <form class="watchlistSelection" action="data-summary" method="POST">  
             <select class="watchlistForm" type="text" name="itemDropdown" placeholder="Select items to watch" multiple>
                  <!--<option disabled selected>Select items</option>-->
@@ -23,9 +27,11 @@
                  <option name="Item5" value="Item5">Item5</option>
             </select> 
             <br>
-            <input class="btn btn-outline-info" href='/data-summary/' type="submit" value="Save configuration">
+            <!--<input class="btn btn-outline-info" href='/data-summary/' type="submit" value="Save configuration">-->
          </form>
-
-        <!--<a class="btn btn-outline-info" href='/data-summary/' role='button'>Save configuration</a>-->
+        
+        <div class="config_buttom">
+        <a class="btn btn-outline-info" href='/data-summary/' role='button'>Save configuration</a>
+        </div>
     </body>
 </html>
