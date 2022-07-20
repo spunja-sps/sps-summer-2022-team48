@@ -89,7 +89,7 @@ body {
 /* ------------ Configuration Page ------------*/
 #Configuration{
     position: relative;
-    top: 250%;
+    top: 270%;
     display: flex;
     justify-content: center;
     background-size: cover;
@@ -101,7 +101,7 @@ body {
 
 .config_buttom{
     position: relative;
-    top: 450%;
+    top: 500%;
 }
 
 .watchlistForm {
