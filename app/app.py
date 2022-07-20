@@ -3,8 +3,7 @@ from flask import Flask, render_template, request, session
 from flask_session import Session
 import json
 import requests
-import datetime
-import dateutil.relativedelta
+from datetime import datetime, timedelta
 
 
 app = Flask(__name__)
@@ -36,6 +35,7 @@ def data_summary_page():
     prices_dict = get_prices(watchlist)
 
     return render_template("data_summary.html", prices_dict=prices_dict)
+
 
 @app.route('/graphing', methods=['GET', 'POST'])
 def detailed_data_page():
@@ -75,37 +75,46 @@ def get_prices(list):
         "Cocoa": "COCOA",
         "Corn": "CORN",
         "Natural Gas": "NG",
+        "Canola": "CANO",
+        "Cotton": "COTTON",
+        "Oat": "OAT",
+        "Rice": "RICE",
+        "Soybeans": "SOYBEAN",
+        "Sugar": "SUGAR",
+        "Wheat": "WHEAT",
+        "Beef": "LCAT"
+
     }
     prices_dict = {}
-    today = datetime.datetime.now().date()
-    date = get_date(today)
+    today = datetime.today()
+    yesterday = (today - timedelta(days=1)).date()
+    print(yesterday)
+    print(list)
+    lastMonthDate = get_date(today, 30)
+    print(lastMonthDate)
     for item in list:
-        url_today = "https://commodities-api.com/api/latest?access_key=cqmirudsx2mdaprj2o1s2ftv838j8n3ra5q8cge1s195uxsk8sv3jw4bddfo&symbols=" + \
+        url = "https://commodities-api.com/api/timeseries?access_key=0yw3m4s5g7fz8ialo49gqxtjnxbto11t59jg5qw4krdo15j48v37q06hgsnx&start_date=" + str(lastMonthDate) + "&end_date=" + str(yesterday) + "&symbols=" + \
             api_codes[item]
-        url_past = "https://commodities-api.com/api/" + str(date) + "?access_key=cqmirudsx2mdaprj2o1s2ftv838j8n3ra5q8cge1s195uxsk8sv3jw4bddfo&&symbols=" + \
-            api_codes[item]
-        jsonResponseToday = make_call(url_today)
-        jsonResponsePast = make_call(url_past)
-        print(date)
-        price_today = 1 / \
-            jsonResponseToday["data"]["rates"][api_codes[item]]
-        print(price_today)
-        print(jsonResponsePast)
+        response = requests.get(url)
+        jsonResponse = response.json()
+        price_yesterday = 1 / \
+            jsonResponse["data"]["rates"][str(yesterday)][api_codes[item]]
         price_at_date = 1 / \
-            jsonResponsePast["data"]["rates"][api_codes[item]]
-        prices_dict[item] = [price_today,
-                             get_change(price_today, price_at_date)]
+            jsonResponse["data"]["rates"][str(lastMonthDate)][api_codes[item]]
+        prices_dict[item] = [price_yesterday,
+                             get_change(price_yesterday, price_at_date)]
         print(prices_dict[item])
     return prices_dict
 
 
-def get_date(today):
-    # gets last month's date for now
-    return today + dateutil.relativedelta.relativedelta(months=-1)
+def get_date(today, numberOfDays):
+    # returns the date at numberOfDays going back from today
+    # ex) if numberOfDays = 7, returns last week's date
+    return (today - timedelta(numberOfDays)).date()
 
 
 def get_change(price_today, price_at_date):
-    #returns % change
+    # returns % change
     return ((price_today - price_at_date)/price_at_date) * 100
 
 
