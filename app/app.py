@@ -18,6 +18,11 @@ def welcome():
     return render_template("index.html")
 
 
+@app.route('/info')
+def info():
+    return render_template("info.html")
+
+
 @app.route('/config')
 def config_page():
     return render_template("config.html")
