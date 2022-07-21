@@ -45,46 +45,19 @@ body {
     font-size: 20px;
 }
 
-
-/* ------------ Splash screen ------------ */
-.intro{
+#show h2{
+    font-size: 20px;
+    color:#30303079;
     position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100vh;
-    background: #000000;
-    transition: 1s;
+    top: 800px;
 }
 
-.logo-header{
+.auth {
     position: absolute;
-    top: 45%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color:#ffffff;
+    top: 25px;
+    right: 1px;
+    width: 20%;
 }
-
-.logo{
-    position: relative;
-    display: inline-block;
-    bottom: -20px;
-    opacity: 0.3;
-}
-
-.logo.active{
-    bottom: 0;
-    opacity: 1;
-    transition: ease-in-out 1s;    
-}
-
-.logo.fade{
-    bottom: 150px;
-    opacity: 0;
-    transition: ease-in-out 1s;
-}
-
 
 /* ------------ Configuration Page ------------*/
 #Configuration{
@@ -96,26 +69,38 @@ body {
     background-position: center;
     flex-direction: column;
     align-items: center;
-    line-height: 1.5;
+    line-height: 2.0;
+}
+
+#Configuration p1{
+    font-size: 35px;
+}
+
+#Configuration p2{
+    font-size: 20px;
+    color:#838282a9;
+    position: relative;
+    top: 15px;
 }
 
 .config_buttom{
     position: relative;
-    top: 500%;
+    top: 480%;
+    width: 100%;
 }
 
 .watchlistForm {
     width: 15% !important;
     margin: auto;
     font-size: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .watchlistSelection {
     width: 100%;
-    position: absolute;
-    top: 350px;
+    position: relative;
+    top: 310px;
 }
-
 
 
 /* ------------ watchlist item ------------ */
@@ -129,11 +114,48 @@ body {
 }
 
 .watchlist-cart th{
-    color: rgb(255, 255, 255);
-    background: #8ff5e4;
+    color: rgb(18, 27, 27);
+    font-weight: bold;
+    background: #e4dddd;
     font-weight: normal;
 }
 
 .watchlist-cart td{
     text-align: center;
+}
+
+#lineChart {
+    margin: auto;
+    margin-top: 10vh;
+}
+
+#data_head h1 {
+    font-size: 40px;
+    display: flex;
+    position: relative;
+    top: 55px;
+    font-size: 60px;
+    justify-content: center;
+    background-size: cover;
+    background-position: center;
+    flex-direction: column;
+    align-items: center;
+    color:#ffffff;
+}
+
+#data_head p{
+    position: relative;
+    top: 60px;
+    color:#838282;
+}
+
+/* ------------ graph ------------ */
+.graph_title{
+    position: relative;
+    top: 80px;
+}
+
+#graph_btn{
+    flex-direction: column;
+    align-items: center;
 }

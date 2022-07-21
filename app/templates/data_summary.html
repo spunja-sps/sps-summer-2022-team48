@@ -1,38 +1,41 @@
 <!-- Data Summary Page -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 
-    <head>
-        <link rel="stylesheet" href="../static/css/style.css">
-        <h1>Data Summary page</h1>
-    </head>
-    
-    <body>
+<head>
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+
+<body>
     <!---------watchlist items details--------->
+    <header id="data_head">
+        <h1>WATCHLIST</h1>
+        <p> *Click on the item's name to see a detailed graph of its price change* </p>
+    </header>
     <div class="watchlist-cart">
         <table>
             <tr>
-                <th>Item</th>
-                <th>Current price</th>
-                <th>Change in value</th>
+                <th>ITEM</th>
+                <th>CURRENT PRICE</th>
+                <th>CHANGE IN VALUE</th>
             </tr>
-            {% for opt in options %}
+            {% for item in prices_dict %}
             <tr>
-                <!-- if need to add links for each item in the future --> 
-                <!-- <a href="url_for('opt',name=1)">{{ opt }}</a> -->
                 <!--Item-->
-                <td>{{ opt }}</td>
+                <td><a href="{{ url_for('detailed_data_page', item=item) }}">{{ item }}</a></td>
                 <!--Current price-->
-                <td>$50.00</td>
+                <td>{{ prices_dict[item][0] }} </td>
                 <!--Change in value-->
-                <td>20.00%</td>   
+                <td>{{ prices_dict[item][1] }}%</td>
             </tr>
             {% endfor %}
         </table>
     </div>
-        <a class="btn btn-outline-info" href='/' role='button'>Return to welcome</a>
-        <a class="btn btn-outline-info" href='/config' role='button'>Return to configuration</a>
-    </body>
+    <a class="btn btn-outline-info" href='/' role='button'>Home</a>
+    <a class="btn btn-outline-info" href='/config' role='button'>Select again</a>
+</body>
+
 </html>
