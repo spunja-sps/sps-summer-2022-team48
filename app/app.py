@@ -140,10 +140,11 @@ def get_time_series_prices(item):
     yesterday = (today - timedelta(days=1)).date()
     lastMonthDate = get_date(today, 30)
 
-    url = "https://commodities-api.com/api/timeseries?access_key=0yw3m4s5g7fz8ialo49gqxtjnxbto11t59jg5qw4krdo15j48v37q06hgsnx&start_date=" + str(lastMonthDate) + "&end_date=" + str(yesterday) + "&symbols=" + \
+    url = "https://commodities-api.com/api/timeseries?access_key=fz0xqvzjwuksb056528by15449d1kl7lybv1v33nx8s9083qouzphw41xrak&start_date=" + str(lastMonthDate) + "&end_date=" + str(yesterday) + "&symbols=" + \
         api_codes[item]
     response = requests.get(url)
     jsonResponse = response.json()
+    print(jsonResponse)
     prices_dict = jsonResponse["data"]["rates"]
 
     return prices_dict, api_codes[item]
