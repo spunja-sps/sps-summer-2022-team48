@@ -1,4 +1,5 @@
 
+from cgi import print_exception
 from flask import Flask, render_template, request, session,url_for, redirect
 from flask_session import Session
 import json
@@ -45,10 +46,10 @@ class User(db.Model, UserMixin):
 
 class RegisterForm(FlaskForm):
     username = StringField(validators=[
-                           InputRequired(), Length(min=6, max=20)], render_kw={"placeholder": "Username"})
+                           InputRequired(), Length(min=2, max=20)], render_kw={"placeholder": "Username"})
 
     password = PasswordField(validators=[
-                             InputRequired(), Length(min=6, max=20)], render_kw={"placeholder": "Password"})
+                             InputRequired(), Length(min=2, max=20)], render_kw={"placeholder": "Password"})
 
     submit = SubmitField('Register')
 
@@ -62,10 +63,10 @@ class RegisterForm(FlaskForm):
 
 class LoginForm(FlaskForm):
     username = StringField(validators=[
-                           InputRequired(), Length(min=4, max=20)], render_kw={"placeholder": "Username"})
+                           InputRequired(), Length(min=2, max=20)], render_kw={"placeholder": "Username"})
 
     password = PasswordField(validators=[
-                             InputRequired(), Length(min=8, max=20)], render_kw={"placeholder": "Password"})
+                             InputRequired(), Length(min=2, max=20)], render_kw={"placeholder": "Password"})
 
     submit = SubmitField('Login')
 ###################################
@@ -105,6 +106,13 @@ def login():
             if bcrypt.check_password_hash(user.password, form.password.data):
                 login_user(user)
                 return redirect(url_for('data_summary.html'))
+            else:
+                print(
+                'Wrong Password')
+                
+        else:
+            print(
+                'That username does not exist')
     return render_template('login.html', form=form)
 
 
