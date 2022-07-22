@@ -20,15 +20,15 @@
             <tr>
                 <th>ITEM</th>
                 <th>CURRENT PRICE</th>
-                <th>CHANGE IN VALUE</th>
+                <th>CHANGE IN MONTHLY VALUE</th>
             </tr>
             {% for item in prices_dict %}
             <tr>
                 <!--Item-->
                 <td><a class="item-link" href="{{ url_for('detailed_data_page', item=item) }}">{{ item }}</a></td>
                 <!--Current price-->
-                <td>${{ prices_dict[item][0] }} </td>
-                <!--Change in value-->
+                <td>${{ prices_dict[item][0]}} {{ prices_dict[item][2] }} </td>
+                <!--Change in monthly value-->
                 <td>{{ prices_dict[item][1] }}%</td>
             </tr>
             {% endfor %}
