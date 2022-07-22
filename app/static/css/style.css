@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
+
 html {
     margin-left: 0;
     margin-right: 0;
@@ -13,7 +16,7 @@ body {
     top: 0;
     width: 1005;
     height: 80px;
-    font-family: 'Open Sans', sans-serif;
+    /* font-family: 'Open Sans', sans-serif; */
     color: #ffffffc7;
     background-color: #000000;
     background-size: cover;
@@ -22,6 +25,7 @@ body {
     justify-content: center;
     align-items: center;
     line-height: 1.5;
+    font-family: 'Roboto', sans-serif;
 }
 
 #show{
@@ -35,14 +39,18 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    font-family: "Roboto Slab";
 }
 
 #show h1{
     font-size: 50px;
+    color: rgb(75, 192, 192);
+    padding-bottom: 1vh;
 }
 
 #show p{
     font-size: 20px;
+    padding-bottom: 1vh;
 }
 
 #show h2{
@@ -50,6 +58,7 @@ body {
     color:#30303079;
     position: fixed;
     top: 800px;
+    padding-bottom: 1vh;
 }
 
 .auth {
@@ -93,7 +102,16 @@ body {
     width: 15% !important;
     margin: auto;
     font-size: 20px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: rgb(75, 192, 192);
+    border: 6px solid transparent;
+    border-color: rgb(75, 192, 192) transparent transparent transparent;
+    margin-bottom: 3vh;
+}
+
+.watchlistForm select {
+    display: none;
+    overflow-y: auto;
 }
 
 .watchlistSelection {
@@ -156,7 +174,7 @@ a:hover #item-link {
     background-position: center;
     flex-direction: column;
     align-items: center;
-    color:#ffffff;
+    /* color:#ffffff; */
 }
 
 #data_head p{
@@ -168,10 +186,42 @@ a:hover #item-link {
 /* ------------ graph ------------ */
 .graph_title{
     position: relative;
-    top: 80px;
+    top: 55px;
 }
 
 #graph_btn{
     flex-direction: column;
     align-items: center;
+    padding-top: 3vh;
+}
+
+.about-title {
+    font-family: 'Roboto Slab';
+    padding: 3vh;
+    color: rgb(75, 192, 192);
+}
+
+.watchlist-title {
+    font-family: 'Roboto Slab';
+    /* padding: 3vh; */
+    color: rgb(75, 192, 192);
+}
+
+.graph-title {
+    font-family: 'Roboto Slab';
+    padding-bottom: 6vh;
+    color: rgb(75, 192, 192);
+    font-size: 60px;
+}
+
+.signup-title {
+    font-family: 'Roboto Slab';
+    padding-top: 3vh;
+    color: rgb(75, 192, 192);
+}
+
+.signin-title {
+    font-family: 'Roboto Slab';
+    padding-top: 3vh;
+    color: rgb(75, 192, 192);
 }
