@@ -74,6 +74,7 @@ class LoginForm(FlaskForm):
 
 @app.route('/')
 def welcome():
+    session["is_logged_in"] = False
     return render_template("index.html")
 
 
@@ -87,7 +88,9 @@ def error():
 
 @app.route('/config')
 def config_page():
-    return render_template("config.html")
+    is_logged_in = session.get("is_logged_in")
+        
+    return render_template("config.html", is_logged_in=is_logged_in)
 
 
 @app.route('/data-summary', methods=['GET', 'POST'])
@@ -114,7 +117,9 @@ def login():
         if user:
             if bcrypt.check_password_hash(user.password, form.password.data):
                 login_user(user)
-                return render_template("config.html")
+                session["is_logged_in"] = True
+                print("hello")
+                return render_template("config.html", is_logged_in=True)
             else:
                 return redirect(url_for("error"))
         else:
@@ -201,10 +206,11 @@ def get_monthly_price_change(list):
     yesterday = (today - timedelta(days=1)).date()
     lastMonthDate = get_date(today, 30)
     for item in list:
-        url = "https://commodities-api.com/api/timeseries?access_key=fz0xqvzjwuksb056528by15449d1kl7lybv1v33nx8s9083qouzphw41xrak&start_date=" + str(lastMonthDate) + "&end_date=" + str(yesterday) + "&symbols=" + \
+        url = "https://commodities-api.com/api/timeseries?access_key=aieqnpp3ftiys55nfp4c469m6h16tvlxfa3qpjy9m310pm0be64mo54k6pro&start_date=" + str(lastMonthDate) + "&end_date=" + str(yesterday) + "&symbols=" + \
             api_codes[item]
         response = requests.get(url)
         jsonResponse = response.json()
+        print(jsonResponse)
         price_yesterday = 1 / \
             jsonResponse["data"]["rates"][str(yesterday)][api_codes[item]]
         price_at_date = 1 / \
@@ -237,10 +243,11 @@ def get_time_series_prices(item):
     yesterday = (today - timedelta(days=1)).date()
     lastMonthDate = get_date(today, 30)
 
-    url = "https://commodities-api.com/api/timeseries?access_key=fz0xqvzjwuksb056528by15449d1kl7lybv1v33nx8s9083qouzphw41xrak&start_date=" + str(lastMonthDate) + "&end_date=" + str(yesterday) + "&symbols=" + \
+    url = "https://commodities-api.com/api/timeseries?access_key=aieqnpp3ftiys55nfp4c469m6h16tvlxfa3qpjy9m310pm0be64mo54k6pro&start_date=" + str(lastMonthDate) + "&end_date=" + str(yesterday) + "&symbols=" + \
         api_codes[item]
     response = requests.get(url)
     jsonResponse = response.json()
+    print(jsonResponse)
     prices_dict = jsonResponse["data"]["rates"]
 
     return prices_dict, api_codes[item]

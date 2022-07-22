@@ -37,6 +37,9 @@
             </select> 
             <br>
             <input class="btn btn-outline-info" href='/data-summary/' type="submit" value="Save configuration">
+            {% if is_logged_in == True %}
+                <input class="btn btn-outline-info" href='/data-summary/' type="submit" value="See saved watchlist">
+            {% endif %}
          </form>
         
         <!-- <div class="config_buttom">
