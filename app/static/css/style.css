@@ -125,6 +125,21 @@ body {
     text-align: center;
 }
 
+a:link #item-link {
+    color: white !important;
+    text-decoration: none !important;
+}
+
+a:visited #item-link {
+    color: white !important;
+    text-decoration: none !important;
+}
+
+a:hover #item-link {
+    color: rgb(206, 203, 203) !important;
+    text-decoration: none !important;
+}
+
 #lineChart {
     margin: auto;
     margin-top: 10vh;
