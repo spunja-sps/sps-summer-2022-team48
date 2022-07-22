@@ -10,7 +10,14 @@
     </head>
     <body>
         <p></p>
-        <a class="btn btn-outline-info" href='/config' role='button'>Get started!</a>
+
+        <br>
+    
+        <a class="btn btn-outline-info" href='/config' role='button'>Get started as a Guest!</a>
         <a class="btn btn-outline-info" href='/info' role='button'>About</a>
+        <br><br>
+        <a  class="btn btn-outline-info" href="{{ url_for('login') }}">Sign In</a>
+        <br>
+        <a class="btn btn-outline-info"  href="{{ url_for('register') }}">Sign Up</a><br>
     </body>
 </html>
