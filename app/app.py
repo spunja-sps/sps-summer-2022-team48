@@ -93,7 +93,13 @@ def config_page():
 @app.route('/data-summary', methods=['GET', 'POST'])
 def data_summary_page():
     watchlist = request.form.getlist("itemDropdown")
-    session["watchlist"] = watchlist
+
+    # if coming from configuration, save dropdown items to session
+    if watchlist:
+        session["watchlist"] = watchlist
+    # if coming from graphing page, reset watchlist var from session
+    else:
+        watchlist = session.get("watchlist")
 
     prices_dict = get_monthly_price_change(watchlist)
 
@@ -145,7 +151,6 @@ def detailed_data_page():
     watchlist = session.get("watchlist")
     print(watchlist)
 
-    # to be added back in after API is implemented
     prices_dict, api_code = get_time_series_prices(selected_item)
     labels, data = parse_data_for_graph(prices_dict, api_code)
 
@@ -199,7 +204,7 @@ def get_monthly_price_change(list):
     lastMonthDate = get_date(today, 30)
     print(lastMonthDate)
     for item in list:
-        url = "https://commodities-api.com/api/timeseries?access_key=0yw3m4s5g7fz8ialo49gqxtjnxbto11t59jg5qw4krdo15j48v37q06hgsnx&start_date=" + str(lastMonthDate) + "&end_date=" + str(yesterday) + "&symbols=" + \
+        url = "https://commodities-api.com/api/timeseries?access_key=fz0xqvzjwuksb056528by15449d1kl7lybv1v33nx8s9083qouzphw41xrak&start_date=" + str(lastMonthDate) + "&end_date=" + str(yesterday) + "&symbols=" + \
             api_codes[item]
         response = requests.get(url)
         jsonResponse = response.json()
@@ -208,8 +213,8 @@ def get_monthly_price_change(list):
             jsonResponse["data"]["rates"][str(yesterday)][api_codes[item]]
         price_at_date = 1 / \
             jsonResponse["data"]["rates"][str(lastMonthDate)][api_codes[item]]
-        prices_dict[item] = [price_yesterday,
-                             get_change(price_yesterday, price_at_date)]
+        prices_dict[item] = [round(price_yesterday, 3),
+                             round(get_change(price_yesterday, price_at_date), 3)]
         print(prices_dict[item])
     return prices_dict
 
@@ -235,10 +240,11 @@ def get_time_series_prices(item):
     yesterday = (today - timedelta(days=1)).date()
     lastMonthDate = get_date(today, 30)
 
-    url = "https://commodities-api.com/api/timeseries?access_key=0yw3m4s5g7fz8ialo49gqxtjnxbto11t59jg5qw4krdo15j48v37q06hgsnx&start_date=" + str(lastMonthDate) + "&end_date=" + str(yesterday) + "&symbols=" + \
+    url = "https://commodities-api.com/api/timeseries?access_key=fz0xqvzjwuksb056528by15449d1kl7lybv1v33nx8s9083qouzphw41xrak&start_date=" + str(lastMonthDate) + "&end_date=" + str(yesterday) + "&symbols=" + \
         api_codes[item]
     response = requests.get(url)
     jsonResponse = response.json()
+    print(jsonResponse)
     prices_dict = jsonResponse["data"]["rates"]
 
     return prices_dict, api_codes[item]
