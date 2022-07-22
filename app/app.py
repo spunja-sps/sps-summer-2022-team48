@@ -30,7 +30,13 @@ def config_page():
 @app.route('/data-summary', methods=['GET', 'POST'])
 def data_summary_page():
     watchlist = request.form.getlist("itemDropdown")
-    session["watchlist"] = watchlist
+
+    # if coming from configuration, save dropdown items to session
+    if watchlist:
+        session["watchlist"] = watchlist
+    # if coming from graphing page, reset watchlist var from session
+    else:
+        watchlist = session.get("watchlist")
 
     prices_dict = get_monthly_price_change(watchlist)
 
