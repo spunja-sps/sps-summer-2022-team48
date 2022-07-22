@@ -181,6 +181,31 @@ a:hover #item-link {
     position: relative;
     top: 60px;
     color:#838282;
+    padding-bottom: 5vh;
+}
+
+.table-header {
+    margin-top: 10vh;
+    padding-bottom: 5px;
+    font-family: 'Roboto Slab';
+    font-weight: bold;
+    background-color:navy;
+    color: rgb(75, 192, 192);
+}
+
+.table-header th {
+    padding-top: 3px;
+    padding-bottom: 3px;
+    font-family: 'Roboto Slab';
+    font-weight: bold;
+    background-color:rgb(75, 192, 192);
+    color: black;
+    /* color: rgb(75, 192, 192); */
+}
+
+.table-body {
+    padding-top: 20px;
+    margin-top: 20px;
 }
 
 /* ------------ graph ------------ */

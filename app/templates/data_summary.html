@@ -17,13 +17,13 @@
     </header>
     <div class="watchlist-cart">
         <table>
-            <tr>
+            <tr class="table-header">
                 <th>ITEM</th>
                 <th>CURRENT PRICE</th>
                 <th>CHANGE IN MONTHLY VALUE</th>
             </tr>
             {% for item in prices_dict %}
-            <tr>
+            <tr class="table-body">
                 <!--Item-->
                 <td><a class="item-link" style="color:white; text-decoration:none" href="{{ url_for('detailed_data_page', item=item) }}">{{ item }}</a></td>
                 <!--Current price-->

@@ -206,7 +206,7 @@ def get_monthly_price_change(list):
     yesterday = (today - timedelta(days=1)).date()
     lastMonthDate = get_date(today, 30)
     for item in list:
-        url = "https://commodities-api.com/api/timeseries?access_key=aieqnpp3ftiys55nfp4c469m6h16tvlxfa3qpjy9m310pm0be64mo54k6pro&start_date=" + str(lastMonthDate) + "&end_date=" + str(yesterday) + "&symbols=" + \
+        url = "https://commodities-api.com/api/timeseries?access_key=89ih0qtynzs19876x7u11zp2t9uwcn5o2nwbxl1c1bz94c4993dhel478200&start_date=" + str(lastMonthDate) + "&end_date=" + str(yesterday) + "&symbols=" + \
             api_codes[item]
         response = requests.get(url)
         jsonResponse = response.json()
@@ -243,7 +243,7 @@ def get_time_series_prices(item):
     yesterday = (today - timedelta(days=1)).date()
     lastMonthDate = get_date(today, 30)
 
-    url = "https://commodities-api.com/api/timeseries?access_key=aieqnpp3ftiys55nfp4c469m6h16tvlxfa3qpjy9m310pm0be64mo54k6pro&start_date=" + str(lastMonthDate) + "&end_date=" + str(yesterday) + "&symbols=" + \
+    url = "https://commodities-api.com/api/timeseries?access_key=89ih0qtynzs19876x7u11zp2t9uwcn5o2nwbxl1c1bz94c4993dhel478200&start_date=" + str(lastMonthDate) + "&end_date=" + str(yesterday) + "&symbols=" + \
         api_codes[item]
     response = requests.get(url)
     jsonResponse = response.json()
