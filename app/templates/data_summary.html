@@ -12,8 +12,8 @@
 <body>
     <!---------watchlist items details--------->
     <header id="data_head">
-        <h1>WATCHLIST</h1>
-        <p> *Click on the item's name to see a detailed graph of its price change* </p>
+        <h1 class="watchlist-title">WATCHLIST</h1>
+        <p> Click on an item to see its monthly price change in more depth.</p>
     </header>
     <div class="watchlist-cart">
         <table>
@@ -25,7 +25,7 @@
             {% for item in prices_dict %}
             <tr>
                 <!--Item-->
-                <td><a class="item-link" href="{{ url_for('detailed_data_page', item=item) }}">{{ item }}</a></td>
+                <td><a class="item-link" style="color:white; text-decoration:none" href="{{ url_for('detailed_data_page', item=item) }}">{{ item }}</a></td>
                 <!--Current price-->
                 <td>${{ prices_dict[item][0]}} {{ prices_dict[item][2] }} </td>
                 <!--Change in monthly value-->

@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <h1>Sign in</h1><br>
+    <h1 class="signin-title">SIGN IN</h1><br>
 
     <form method="POST" action="">
         {{ form.hidden_tag() }}
@@ -20,7 +20,8 @@
         {{ form.submit }}
     </form>
     <br>
-    <a href="{{ url_for('register') }}">Don't have an account? Sign Up</a>
+    <!-- <a href="{{ url_for('register') }}">Don't have an account? Sign Up</a> -->
+    <a class="btn btn-outline-info" href="{{ url_for('register') }}" role='button'>Don't have an account? Sign Up</a>
 </body>
 
 </html>
