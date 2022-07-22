@@ -25,9 +25,9 @@
             {% for item in prices_dict %}
             <tr>
                 <!--Item-->
-                <td><a class="item-link" href="{{ url_for('detailed_data_page', item=item) }}">{{ item }}</a></td>
+                <td><a href="{{ url_for('detailed_data_page', item=item) }}">{{ item }}</a></td>
                 <!--Current price-->
-                <td>${{ prices_dict[item][0] }} </td>
+                <td>{{ prices_dict[item][0] }} </td>
                 <!--Change in value-->
                 <td>{{ prices_dict[item][1] }}%</td>
             </tr>
