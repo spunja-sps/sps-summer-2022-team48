@@ -7,17 +7,20 @@
 
 <head>
     <link rel="stylesheet" href="../static/css/style.css">
-    <h1>Data Summary page</h1>
 </head>
 
 <body>
     <!---------watchlist items details--------->
+    <header id="data_head">
+        <h1>WATCHLIST</h1>
+        <p> *Click on the item's name to see a detailed graph of its price change* </p>
+    </header>
     <div class="watchlist-cart">
         <table>
             <tr>
-                <th>Item</th>
-                <th>Current price</th>
-                <th>Change in value</th>
+                <th>ITEM</th>
+                <th>CURRENT PRICE</th>
+                <th>CHANGE IN VALUE</th>
             </tr>
             {% for item in prices_dict %}
             <tr>
@@ -32,7 +35,7 @@
         </table>
     </div>
     <a class="btn btn-outline-info" href='/' role='button'>Home</a>
-    <a class="btn btn-outline-info" href='/config' role='button'>Configuration</a>
+    <a class="btn btn-outline-info" href='/config' role='button'>Select again</a>
 </body>
 
 </html>
