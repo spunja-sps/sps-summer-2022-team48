@@ -24,3 +24,10 @@ sqlparse==0.4.2
 Werkzeug==2.1.1
 WTForms==3.0.1
 zipp==3.8.0
+python==3.9.9
+certifi==0.0.8
+chardet==1.0.1
+distribute==0.6.24
+gunicorn==0.14.2
+
+
