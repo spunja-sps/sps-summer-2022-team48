@@ -27,7 +27,7 @@ def config_page():
     return render_template("config.html")
 
 
-@app.route('/data-summary', methods=['POST'])
+@app.route('/data-summary', methods=['GET', 'POST'])
 def data_summary_page():
     watchlist = request.form.getlist("itemDropdown")
     session["watchlist"] = watchlist
