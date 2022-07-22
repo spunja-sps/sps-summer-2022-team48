@@ -199,23 +199,20 @@ def get_monthly_price_change(list):
     prices_dict = {}
     today = datetime.today()
     yesterday = (today - timedelta(days=1)).date()
-    print(yesterday)
-    print(list)
     lastMonthDate = get_date(today, 30)
-    print(lastMonthDate)
     for item in list:
         url = "https://commodities-api.com/api/timeseries?access_key=fz0xqvzjwuksb056528by15449d1kl7lybv1v33nx8s9083qouzphw41xrak&start_date=" + str(lastMonthDate) + "&end_date=" + str(yesterday) + "&symbols=" + \
             api_codes[item]
         response = requests.get(url)
         jsonResponse = response.json()
-        print(jsonResponse)
         price_yesterday = 1 / \
             jsonResponse["data"]["rates"][str(yesterday)][api_codes[item]]
         price_at_date = 1 / \
             jsonResponse["data"]["rates"][str(lastMonthDate)][api_codes[item]]
+        price_units = jsonResponse["data"]["unit"]
+
         prices_dict[item] = [round(price_yesterday, 3),
-                             round(get_change(price_yesterday, price_at_date), 3)]
-        print(prices_dict[item])
+                             round(get_change(price_yesterday, price_at_date), 3), price_units]
     return prices_dict
 
 
@@ -244,7 +241,6 @@ def get_time_series_prices(item):
         api_codes[item]
     response = requests.get(url)
     jsonResponse = response.json()
-    print(jsonResponse)
     prices_dict = jsonResponse["data"]["rates"]
 
     return prices_dict, api_codes[item]
