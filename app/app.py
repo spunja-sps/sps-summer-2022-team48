@@ -81,6 +81,9 @@ def welcome():
 def info():
     return render_template("info.html")
 
+@app.route('/error')
+def error():
+    return render_template("error.html")
 
 @app.route('/config')
 def config_page():
@@ -107,12 +110,9 @@ def login():
                 login_user(user)
                 return redirect(url_for('data_summary.html'))
             else:
-                print(
-                'Wrong Password')
-                
+                return redirect(url_for("error"))
         else:
-            print(
-                'That username does not exist')
+            return  redirect(url_for("error"))
     return render_template('login.html', form=form)
 
 
