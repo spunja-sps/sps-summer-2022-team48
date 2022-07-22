@@ -9,7 +9,9 @@
         <meta charset="UTF-8">
         <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
         <link rel="stylesheet" href="../static/css/style.css">
-        <h1>Detailed Data for {{ item }}</h1>
+        <div class = "graph_title">
+        <h1> Tracking Graph for {{ item }} </h1>
+        </div>
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
     </head>
 
@@ -51,7 +53,10 @@
             });
         </script>
 
+        <header id="graph_btn">
         <a class="btn btn-outline-info" href='/' role='button'>Home</a>
-        <a class="btn btn-outline-info" href='/config' role='button'>Configuration</a>
+        <a class="btn btn-outline-info" href='/data-summary' role='button'> Back to Watchlist </a>
+        <a class="btn btn-outline-info" href='/config' role='button'>Select Again</a>
+        </header>
     </body>
 </html>

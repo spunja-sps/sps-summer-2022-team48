@@ -1,15 +1,109 @@
 html {
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 0;
+    margin-right: 0;
     text-align: center !important;
+    box-sizing: border-box;
+}
+
+/* ------------ Welcome Page ------------ */
+
+body {
+    position: relative;
+    left: 0;
+    top: 0;
+    width: 1005;
+    height: 80px;
+    font-family: 'Open Sans', sans-serif;
+    color: #ffffffc7;
+    background-color: #000000;
+    background-size: cover;
+    background-position: center;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    line-height: 1.5;
+}
+
+#show{
+    /*background-image: url('../images/welcome.jpg');*/
+    color: #ffffffc7;
+    background-color: #000000;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#show h1{
+    font-size: 50px;
+}
+
+#show p{
+    font-size: 20px;
+}
+
+#show h2{
+    font-size: 20px;
+    color:#30303079;
+    position: fixed;
+    top: 800px;
+}
+
+.auth {
+    position: absolute;
+    top: 25px;
+    right: 1px;
+    width: 20%;
+}
+
+/* ------------ Configuration Page ------------*/
+#Configuration{
+    position: relative;
+    top: 270%;
+    display: flex;
+    justify-content: center;
+    background-size: cover;
+    background-position: center;
+    flex-direction: column;
+    align-items: center;
+    line-height: 2.0;
+}
+
+#Configuration p1{
+    font-size: 35px;
+}
+
+#Configuration p2{
+    font-size: 20px;
+    color:#838282a9;
+    position: relative;
+    top: 15px;
+}
+
+.config_buttom{
+    position: relative;
+    top: 480%;
+    width: 100%;
 }
 
 .watchlistForm {
-    width: 10% !important;
+    width: 15% !important;
     margin: auto;
+    font-size: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/*------ watchlist item ------*/
+.watchlistSelection {
+    width: 100%;
+    position: relative;
+    top: 310px;
+}
+
+
+/* ------------ watchlist item ------------ */
 .watchlist-cart{
     margin: 80px auto;
 }
@@ -20,16 +114,49 @@ html {
 }
 
 .watchlist-cart th{
-    color: rgb(255, 255, 255);
-    background: #8ff5e4;
+    color: rgb(18, 27, 27);
+    font-weight: bold;
+    background: #e4dddd;
     font-weight: normal;
 }
 
 .watchlist-cart td{
+    color: #ffffff;
     text-align: center;
 }
 
 #lineChart {
     margin: auto;
     margin-top: 10vh;
+}
+
+#data_head h1 {
+    font-size: 40px;
+    display: flex;
+    position: relative;
+    top: 55px;
+    font-size: 60px;
+    justify-content: center;
+    background-size: cover;
+    background-position: center;
+    flex-direction: column;
+    align-items: center;
+    color:#ffffff;
+}
+
+#data_head p{
+    position: relative;
+    top: 60px;
+    color:#838282;
+}
+
+/* ------------ graph ------------ */
+.graph_title{
+    position: relative;
+    top: 80px;
+}
+
+#graph_btn{
+    flex-direction: column;
+    align-items: center;
 }
