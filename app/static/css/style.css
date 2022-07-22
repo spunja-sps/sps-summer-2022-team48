@@ -9,23 +9,31 @@ html {
     margin: auto;
 }
 
+div#loading {
+    width: 35px;
+    height: 35px;
+    display: none;
+    background: url(/static/loadingimage.gif) no-repeat;
+    cursor: wait;
+}
+
 /*------ watchlist item ------*/
-.watchlist-cart{
+.watchlist-cart {
     margin: 80px auto;
 }
 
-.watchlist-cart table{
+.watchlist-cart table {
     width: 100%;
     border-collapse: collapse;
 }
 
-.watchlist-cart th{
+.watchlist-cart th {
     color: rgb(255, 255, 255);
     background: #8ff5e4;
     font-weight: normal;
 }
 
-.watchlist-cart td{
+.watchlist-cart td {
     text-align: center;
 }
 

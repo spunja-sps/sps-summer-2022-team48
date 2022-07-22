@@ -1,7 +1,12 @@
 <!-- Configuration Page -->
 <!DOCTYPE html>
 <html lang="en">
-
+<script type="text/javascript">// <![CDATA[
+    function loading() {
+        $("#loading").show();
+        $("#content").hide();
+    }
+// ]]></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 
@@ -11,30 +16,34 @@
 </head>
 
 <body>
-    <p>Here is the configuration page.</p>
-    <p>Hold down the Ctrl (windows) /
-        Command (Mac) button to select multiple options.</p>
+    <div id="loading"></div>
+    <div id="content">
+        <p>Here is the configuration page.</p>
+        <p>Hold down the Ctrl (windows) /
+            Command (Mac) button to select multiple options.</p>
 
-    <form class="watchlistSelection" action="data-summary" method="POST">
-        <select class="watchlistForm" type="text" name="itemDropdown" placeholder="Select items to watch" multiple>
-            <!--<option disabled selected>Select items</option>-->
-            <option name="Corn" value="Corn">Corn</option>
-            <option name="Arabica Coffee" value="Arabica Coffee">Arabica Coffee</option>
-            <option name="Brent Crude Oil" value="Brent Crude Oil">Brent Crude Oil</option>
-            <option name="Cocoa" value="Cocoa">Cocoa</option>
-            <option name="Natural Gas" value="Natural Gas">Natural Gas</option>
-            <option name="Canola" value="Canola">Canola</option>
-            <option name="Cotton" value="Cotton">Cotton</option>
-            <option name="Oat" value="Oat">Oat</option>
-            <option name="Rice" value="Rice">Rice</option>
-            <option name="Soybeans" value="Soybeans">Soybeans</option>
-            <option name="Sugar" value="Sugar">Sugar</option>
-            <option name="Wheat" value="Wheat">Wheat</option>
-            <option name="Beef" value="Beef">Beef</option>
-        </select>
-        <br>
-        <input class="btn btn-outline-info" href='/data-summary/' type="submit" value="Save configuration">
-    </form>
+        <form class="watchlistSelection" action="data-summary" method="POST">
+            <select class="watchlistForm" type="text" name="itemDropdown" placeholder="Select items to watch" multiple>
+                <!--<option disabled selected>Select items</option>-->
+                <option name="Corn" value="Corn">Corn</option>
+                <option name="Arabica Coffee" value="Arabica Coffee">Arabica Coffee</option>
+                <option name="Brent Crude Oil" value="Brent Crude Oil">Brent Crude Oil</option>
+                <option name="Cocoa" value="Cocoa">Cocoa</option>
+                <option name="Natural Gas" value="Natural Gas">Natural Gas</option>
+                <option name="Canola" value="Canola">Canola</option>
+                <option name="Cotton" value="Cotton">Cotton</option>
+                <option name="Oat" value="Oat">Oat</option>
+                <option name="Rice" value="Rice">Rice</option>
+                <option name="Soybeans" value="Soybeans">Soybeans</option>
+                <option name="Sugar" value="Sugar">Sugar</option>
+                <option name="Wheat" value="Wheat">Wheat</option>
+                <option name="Beef" value="Beef">Beef</option>
+            </select>
+            <br>
+            <input class="btn btn-outline-info" href='/data-summary/' type="submit" value="Save configuration"
+                onclick="loading();">
+        </form>
+    </div>
 
     <!--<a class="btn btn-outline-info" href='/data-summary/' role='button'>Save configuration</a>-->
 </body>
