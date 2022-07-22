@@ -1,0 +1,22 @@
+<!-- Welcome Page -->
+<!DOCTYPE html>
+<html lang="en">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+    <head>
+        <link rel="stylesheet" href="../static/css/style.css">
+        <h1>Error</h1>
+    </head>
+    <body>
+        <div >
+            <p style="color:Tomato;"><br>
+                Password or Username is incorrect
+            </p>
+            
+            <a class="btn btn-outline-info" href='/login' role='button'>Login</a><br>
+            <a href="{{ url_for('register') }}">Don't have an account? Sign Up</a>
+
+        </div>
+    </body>
+</html>

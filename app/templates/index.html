@@ -14,8 +14,8 @@
 
         <div class = "auth">
             <a class="btn btn-outline-info" href='/info' role='button'> About </a>
-            <a class="btn btn-outline-info" href='/config' role='button'> Sign in </a>
-            <a class="btn btn-outline-info" href='/config' role='button'> Sign up </a>
+            <a  class="btn btn-outline-info" href="{{ url_for('login') }}">Sign In</a>
+            <a class="btn btn-outline-info"  href="{{ url_for('register') }}">Sign Up</a><br>
         </div>
 
         <h1>Welcome to Inflow</h1>
@@ -25,4 +25,5 @@
     </header>
 
 </body>
+
 </html>
